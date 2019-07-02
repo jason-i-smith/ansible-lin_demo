@@ -1,0 +1,9 @@
+---
+packages:
+  - httpd
+  - mod_wsgi
+  - firewalld
+services:
+  - httpd
+  - firewalld
+

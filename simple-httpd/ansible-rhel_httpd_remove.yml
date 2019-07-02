@@ -1,20 +1,39 @@
 ---
 - name: Short Ansible Playbook for RHEL
-  hosts: linux
+  hosts: all
   become: true
   gather_facts: false
+  vars_files:
+    - vars/main.yml
+
 
   tasks:
+
+  - name: Close http firewall ports
+    firewalld:
+      name: "{{ item }}"
+      permanent: true
+      state: disabled
+    loop:
+      - http
+      - https
 
   - name: Remove index.html
     file:
       path: /var/www/html/index.html
       state: absent
-      
+  
+  - name: Stop services
+    service:
+      name: "{{ item }}"
+      state: stopped
+    loop: "{{ services }}"
+
   - name: Uninstall httpd
-    yum:
-      name: httpd
+    package:
+      name: "{{ item }}"
       state: absent
+    loop: "{{ packages }}"
 
 ...
 
