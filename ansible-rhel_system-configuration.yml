@@ -1,0 +1,15 @@
+---
+- name: Basic RHEL Configuration
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Set Timezone to MST
+      timezone:
+        name: America/Phoenix
+
+    - name: Restart Chronyd
+      service:
+        name: chronyd
+        state: restart
+
