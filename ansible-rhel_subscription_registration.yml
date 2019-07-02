@@ -1,6 +1,6 @@
 ---
 - name: Register systems with Red Hat
-  hosts: linux
+  hosts: all
   become: true
 
   tasks:
