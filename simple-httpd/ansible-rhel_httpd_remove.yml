@@ -11,7 +11,7 @@
 
   - name: Close http firewall ports
     firewalld:
-      name: "{{ item }}"
+      service: "{{ item }}"
       permanent: true
       state: disabled
     loop:
