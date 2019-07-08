@@ -25,15 +25,13 @@
   
   - name: Stop services
     service:
-      name: "{{ item }}"
+      name: httpd
       state: stopped
-    loop: "{{ services }}"
 
   - name: Uninstall httpd
     package:
-      name: "{{ item }}"
+      name: httpd
       state: absent
-    loop: "{{ packages }}"
 
 ...
 
