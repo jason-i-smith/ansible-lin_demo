@@ -12,25 +12,15 @@
       password: "{{ rhel_pass }}"
       auto_attach: true
 
-  - name: Enable Extras Repo
+  - name: Enable 'Extras' Repo
     rhsm_repository:
       name: rhel-7-server-extras-rpms
       state: enabled
 
-#  - name: Attach subscription
-#    shell: subscription-manager attach --auto
-#    register: attach_out
-#
-#  - name: Debug - Attach subscription
-#    debug:
-#      var: attach_out
-#
-#  - name: Enable Extras Repo
-#    shell: subscription-manager repos --enable=rhel-7-server-extras-rpms
-#    register: extras_out
-#
-#  - name: Debug - Enable Extras Repo
-#    debug:
-#      var: extras_out
+  - name: Enable 'Software Collections' Repo
+    rhsm_repository:
+      name: rhel-server-rhscl-7-rpms
+      state: enabled
+
 ...
 
