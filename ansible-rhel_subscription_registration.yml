@@ -12,15 +12,11 @@
       password: "{{ rhel_pass }}"
       auto_attach: true
 
-  - name: Enable 'Extras' Repo
+  - name: Enable additional repositories
     rhsm_repository:
-      name: rhel-7-server-extras-rpms
+      name: "{{ item }}"
       state: enabled
-
-  - name: Enable 'Software Collections' Repo
-    rhsm_repository:
-      name: rhel-server-rhscl-7-rpms
-      state: enabled
+    loop: "{{ repo_list }}"
 
 ...
 
