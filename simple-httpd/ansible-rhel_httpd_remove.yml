@@ -29,7 +29,7 @@
       state: stopped
 
   - name: Uninstall httpd
-    package:
+    yum:
       name: httpd
       state: absent
 

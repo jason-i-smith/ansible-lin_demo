@@ -9,7 +9,7 @@
   tasks:
 
     - name: Install required packages
-      package:
+      yum:
         name: "{{ item }}"
         state: latest
       loop: "{{ packages }}"
