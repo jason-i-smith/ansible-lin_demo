@@ -22,7 +22,7 @@
     file:
       path: /var/www/html/index.html
       state: absent
-  
+
   - name: Stop services
     service:
       name: httpd
