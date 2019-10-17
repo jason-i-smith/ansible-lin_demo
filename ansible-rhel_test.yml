@@ -1,6 +1,7 @@
 ---
 - name: Test fetch
   hosts: rhel
+  become: true
 
   tasks:
   - name: fetch to opt
