@@ -1,0 +1,12 @@
+---
+- name: Test fetch
+  hosts: rhel
+
+  tasks:
+  - name: fetch to opt
+    fetch:
+      src: /etc/chrony.conf
+      dest: /opt
+
+...
+
