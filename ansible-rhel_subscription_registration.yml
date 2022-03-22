@@ -7,23 +7,11 @@
     - vars/vault.yml
 
   tasks:
-
   - name: Register RHEL Subscription
     redhat_subscription:
       state: present
       username: "{{ rhel_user }}"
       password: "{{ rhel_pass }}"
       auto_attach: true
-
-  - name: Enable additional repositories
-    rhsm_repository:
-      name: "{{ item }}"
-      state: enabled
-    loop: "{{ repo_list }}"
-
-  - name: Install Ansible
-    dnf:
-      name: ansible
-      state: present
 ...
 
