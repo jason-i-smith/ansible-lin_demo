@@ -2,14 +2,28 @@
 - name: Basic RHEL Configuration
   hosts: all
   become: yes
+  vars_files:
+    - vars/vars.yml
+    - vars/vault.yml
 
   tasks:
-    - name: Set Timezone to MST
-      timezone:
-        name: America/Phoenix
+  - name: Enable additional repositories
+    rhsm_repository:
+      name: "{{ item }}"
+      state: enabled
+    loop: "{{ repo_list }}"
 
-    - name: Restart Chronyd
-      service:
-        name: chronyd
-        state: restart
+  - name: Install Ansible
+    dnf:
+      name: ansible
+      state: present
+  
+  - name: Set Timezone to Eastern
+    timezone:
+      name: America/New_York
+
+  - name: Restart Chronyd
+    service:
+      name: chronyd
+      state: restart
 

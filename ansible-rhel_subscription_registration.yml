@@ -2,6 +2,9 @@
 - name: Register systems with Red Hat
   hosts: all
   become: true
+  vars_files:
+    - vars/vars.yml
+    - vars/vault.yml
 
   tasks:
 
@@ -18,5 +21,9 @@
       state: enabled
     loop: "{{ repo_list }}"
 
+  - name: Install Ansible
+    dnf:
+      name: ansible
+      state: present
 ...
 

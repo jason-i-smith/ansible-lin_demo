@@ -1,0 +1,4 @@
+---
+rhel_hostname: "mssqlserver.example.com"
+repo_list:
+  - ansible-2-for-rhel-8-x86_64-rpms
