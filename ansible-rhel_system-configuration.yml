@@ -8,27 +8,27 @@
 
   tasks:
   - name: Enable additional repositories
-    rhsm_repository:
+    community.general.rhsm_repository:
       name: "{{ item }}"
       state: enabled
     loop: "{{ repo_list }}"
 
   - name: Install Ansible
-    dnf:
+    ansible.builtin.dnf:
       name: ansible
       state: present
   
   - name: Set hostname
-    hostname:
+    ansible.builtin.hostname:
       name: "{{ rhel_hostname }}"
       use: systemd
 
   - name: Set Timezone to Eastern
-    timezone:
+    community.general.timezone:
       name: America/New_York
 
   - name: Restart Chronyd
-    service:
+    ansible.builtin.service:
       name: chronyd
       state: restart
 

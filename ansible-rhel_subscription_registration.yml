@@ -8,7 +8,7 @@
 
   tasks:
   - name: Register RHEL Subscription
-    redhat_subscription:
+    community.general.redhat_subscription:
       state: present
       username: "{{ rhel_user }}"
       password: "{{ rhel_pass }}"
